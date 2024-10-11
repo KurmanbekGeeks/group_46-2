@@ -8,6 +8,9 @@ async def command_start_handler(message: types.Message):
 
     await bot.send_message(chat_id=message.from_user.id, text='Привет!')
 
+    await bot.send_message(chat_id=message.from_user.id,
+                           text=f'Твой телеграм ID - {message.from_user.id}')
+
 
 async def send_picture_handler(message: types.Message):
     photo_path = os.path.join("images", "cat.webp")
