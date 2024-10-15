@@ -8,10 +8,18 @@ async def sql_create():
     if db:
         print('База данных подключена')
     cursor.execute(queries.CREATE_TABLE_STORE)
+    cursor.execute(queries.CREATE_TABLE_STORE_DETAIL)
 
 
-async def sql_insert_store(name_product, size, price, photo):
+async def sql_insert_store(name_product, product_id, size, price, photo):
     cursor.execute(queries.INSERT_STORE_QUERY, (
-        name_product, size, price, photo
+        name_product, product_id, size, price, photo
+    ))
+    db.commit()
+
+
+async def sql_insert_store_detail(product_id, category, info_product):
+    cursor.execute(queries.INSERT_STORE_DETAIL_QUERY, (
+        product_id, category, info_product
     ))
     db.commit()
